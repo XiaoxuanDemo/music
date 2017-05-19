@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdm.mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.gdm.model.Comment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="goodnum" jdbcType="INTEGER" property="goodnum" />
+    <result column="badnum" jdbcType="INTEGER" property="badnum" />
+    <result column="musicid" jdbcType="INTEGER" property="musicid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userid, createtime, content, goodnum, badnum, musicid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gdm.model.Comment">
+    insert into comment (id, userid, createtime, 
+      content, goodnum, badnum, 
+      musicid)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{createtime,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{goodnum,jdbcType=INTEGER}, #{badnum,jdbcType=INTEGER}, 
+      #{musicid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gdm.model.Comment">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="goodnum != null">
+        goodnum,
+      </if>
+      <if test="badnum != null">
+        badnum,
+      </if>
+      <if test="musicid != null">
+        musicid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="goodnum != null">
+        #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="badnum != null">
+        #{badnum,jdbcType=INTEGER},
+      </if>
+      <if test="musicid != null">
+        #{musicid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gdm.model.Comment">
+    update comment
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="goodnum != null">
+        goodnum = #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="badnum != null">
+        badnum = #{badnum,jdbcType=INTEGER},
+      </if>
+      <if test="musicid != null">
+        musicid = #{musicid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gdm.model.Comment">
+    update comment
+    set userid = #{userid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      goodnum = #{goodnum,jdbcType=INTEGER},
+      badnum = #{badnum,jdbcType=INTEGER},
+      musicid = #{musicid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

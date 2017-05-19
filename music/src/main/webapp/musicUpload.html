@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>musicUpload.html</title>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  </head>
+  
+  <body>
+    <form action="music/upload" method="post" enctype="multipart/form-data">
+  
+   	<input type="text" name="name" placeholder="名字">
+   	<input type="text" name="author" placeholder="作家">
+   	<input type="text" name="album" placeholder="专辑">
+   	<br>
+   	<a>音乐文件</a>
+   	<input type="file" name="musicfile" >
+   	<br>
+   	<a>mv文件</a>
+   	<input type="file" name="mvfile">
+   	   	<br>
+   	<a>音乐图片</a>
+   	<input type="file" name="lrcfile">
+   	   	   	<br>
+   	<a>歌词文件</a>
+   	<input type="file" name="imgfile">
+    <input type="submit">
+    </form>
+  </body>
+</html>
