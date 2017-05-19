@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdm.mapper.ListContentMapper">
+	<resultMap id="BaseResultMap" type="com.gdm.model.ListContent">
+    <result column="musicid" jdbcType="INTEGER" property="musicid" />
+    <result column="name" jdbcType="VARCHAR" property="musicname" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="album" jdbcType="VARCHAR" property="album" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="mvpath" jdbcType="VARCHAR" property="mvpath" />
+    <result column="lrcfile" jdbcType="VARCHAR" property="lrcfile" />
+    <result column="listname" jdbcType="VARCHAR" property="listname" />
+    <result column="listid" jdbcType="INTEGER" property="listid" />
+    <result column="discription" jdbcType="VARCHAR" property="discription" />
+    <result column="imgpath" jdbcType="VARCHAR" property="imgpath" />
+    
+  </resultMap>
+  <select id="getMuiscList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  select a.*,b.name as listname,b.id as listid,b.discription from music as a ,list as b ,musiclist as c WHERE c.musicid=a.musicid and c.listid=b.id and b.id=#{id,jdbcType=INTEGER}
+  </select>
+</mapper>
